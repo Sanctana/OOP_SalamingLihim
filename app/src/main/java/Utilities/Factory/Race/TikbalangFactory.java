@@ -1,9 +1,9 @@
 package Utilities.Factory.Race;
 
 import Characters.Race.*;
+import Main.GameManager;
 import Utilities.Factory.Factory;
 import Characters.Class.ClassType;
-import java.util.Scanner;
 import Characters.Class.*;
 
 public class TikbalangFactory implements Factory {
@@ -16,8 +16,7 @@ public class TikbalangFactory implements Factory {
         System.out.println("Choose your class: ");
         System.out.println("1. Archer ");
         System.out.println("2. Spearmen");
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
+        int choice = GameManager.getScanner().nextInt();
 
         ClassType classType;
         switch (choice) {
@@ -33,7 +32,6 @@ public class TikbalangFactory implements Factory {
                 break;
         }
 
-        sc.close();
         return classType;
     }
 

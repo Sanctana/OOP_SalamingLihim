@@ -9,10 +9,10 @@ import Characters.Class.*;
 
 public class GameManager {
     private Player player;
-    private Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public GameManager() {
-        scanner = new Scanner(System.in);
+    public static Scanner getScanner() {
+        return scanner;
     }
 
     public void init() {
@@ -57,6 +57,7 @@ public class GameManager {
         ClassType classType = factory.createClass();
         System.out.println("Please enter a name for your character: ");
         String name = scanner.nextLine();
+
         player = new Player(name, race, classType);
         System.out.println(player);
     }
