@@ -12,8 +12,8 @@ enum Skills {
 
 public class Player {
     private String name;
-    public Race race;
-    public ClassType classType;
+    private Race race;
+    private ClassType classType;
     private int hp;
     private int mana;
 
@@ -61,5 +61,11 @@ public class Player {
 
     public int useSkill(Skills skill) {
         return classType.useSkill(skill.ordinal());
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Name: %s\nRace: %s\nClass: %s\nHP: %d\nMana: %d\n", name, race.getName(),
+                classType.getName(), hp, mana);
     }
 }

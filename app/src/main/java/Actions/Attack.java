@@ -2,18 +2,18 @@ package Actions;
 
 public class Attack {
     private String name;
-    private int min;
-    private int max;
+    private int minDamage;
+    private int maxDamage;
 
     public Attack(String name, int damage) {
         this.name = name;
-        min = max = damage;
+        minDamage = maxDamage = damage;
     }
 
-    public Attack(String name, int min, int max) {
+    public Attack(String name, int minDamage, int maxDamage) {
         this.name = name;
-        this.min = min;
-        this.max = max;
+        this.minDamage = minDamage;
+        this.maxDamage = maxDamage;
     }
 
     public String getName() {
@@ -21,11 +21,11 @@ public class Attack {
     }
 
     public int getDamage() {
-        return (int) (Math.random() * (max - min + 1)) + min;
+        return (int) (Math.random() * (maxDamage - minDamage + 1)) + minDamage;
     }
 
     @Override
     public String toString() {
-        return name + " (Damage: " + min + (min != max ? "-" + max : "") + ")";
+        return name + " (Damage: " + minDamage + (minDamage != maxDamage ? "-" + maxDamage : "") + ")";
     }
 }
