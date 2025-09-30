@@ -1,12 +1,19 @@
 package Characters;
 
-import java.sql.SQLOutput;
+import Characters.Class.ClassType;
+import Characters.Race.Race;
+
+enum Skills {
+    SKILL_1, // 0
+    SKILL_2, // 1
+    SKILL_3, // 2
+    SKILL_4 // 3
+}
 
 public class Player {
-
     private String name;
-    private Race race;
-    private ClassType classType;
+    public Race race;
+    public ClassType classType;
     private int hp;
     private int mana;
 
@@ -16,6 +23,22 @@ public class Player {
         this.classType = classType;
         this.hp = race.getBaseHP() + classType.getBonusHP();
         this.mana = race.getBaseMana() + classType.getBonusMana();
+
+        classType.useSkill(Skills.SKILL_1.ordinal());
+    }
+
+    public Player(String name) {
+        this.name = name;
+    }
+
+    public Player setRace(Race race) {
+        this.race = race;
+        return this;
+    }
+
+    public Player setClassType(ClassType classType) {
+        this.classType = classType;
+        return this;
     }
 
     public void displayStats() {
@@ -24,8 +47,19 @@ public class Player {
         System.out.println("HP: " + hp + " | Mana: " + mana);
     }
 
-    //Methods to implement:
-    // takeDamage (hp - damage)
-    // isAlive (check if alive)
-    //use skill
+    public Boolean isAlive() {
+        return hp > 0;
+    }
+
+    public void takeDamage(int damage) {
+        hp -= damage;
+    }
+
+    public int basicAttack() {
+        return race.basicAttack();
+    }
+
+    public int useSkill(Skills skill) {
+        return classType.useSkill(skill.ordinal());
+    }
 }

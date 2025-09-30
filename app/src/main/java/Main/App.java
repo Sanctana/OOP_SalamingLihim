@@ -6,6 +6,10 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        // Player player = new Player("Hero", new Tikbalang(), new Archer())
+
+        // player.useSkill(Skills.SKILL_1);
+
         System.out.println("+------------------------------------------------+");
         System.out.println("|             Welcome, Traveler, to              |");
         System.out.println("|              *  SALAMING LIHIM  *              |");
@@ -37,7 +41,7 @@ public class App {
 
         switch (choice) {
             case 1:
-
+                System.out.println("1. Archer ");
             case 2:
 
             case 3:
