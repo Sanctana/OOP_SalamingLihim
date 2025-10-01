@@ -1,4 +1,4 @@
-package Characters;
+package game.characters;
 
 public class Tikbalang extends Race {
 

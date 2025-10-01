@@ -1,17 +1,15 @@
-package Characters;
+package game.characters;
 
-import java.sql.SQLOutput;
+public class Player  {
 
-public class Player {
-
-    private String name;
+//    private String name;
     private Race race;
     private ClassType classType;
     private int hp;
     private int mana;
 
     public Player(String name, Race race, ClassType classType) {
-        this.name = name;
+//        this.name = name;
         this.race = race;
         this.classType = classType;
         this.hp = race.getBaseHP() + classType.getBonusHP();
@@ -24,8 +22,12 @@ public class Player {
         System.out.println("HP: " + hp + " | Mana: " + mana);
     }
 
-    //Methods to implement:
+
+    // Methods to implement: Or maybe i sud ug lain nga class na Battle System?
     // takeDamage (hp - damage)
     // isAlive (check if alive)
-    //use skill
+    public boolean isAlive() {
+        return hp > 0;
+    }
+    // use skill
 }
