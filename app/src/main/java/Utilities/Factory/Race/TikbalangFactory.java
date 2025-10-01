@@ -1,11 +1,12 @@
 package Utilities.Factory.Race;
 
-import Characters.Race.*;
-import Utilities.Factory.Factory;
-import Characters.Class.ClassType;
-import Characters.Class.*;
+import static Game.GameManager.getScanner;
 
-import static Main.GameManager.getScanner;
+import Characters.Class.Archer;
+import Characters.Class.ClassType;
+import Characters.Race.Race;
+import Characters.Race.Tikbalang;
+import Utilities.Factory.Factory;
 
 public class TikbalangFactory implements Factory {
 

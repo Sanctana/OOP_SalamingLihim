@@ -11,22 +11,16 @@ enum Skills {
 }
 
 public class Player {
-    private String name;
     private Race race;
     private ClassType classType;
     private int hp;
     private int mana;
 
-    public Player(String name, Race race, ClassType classType) {
-        this.name = name;
+    public Player(Race race, ClassType classType) {
         this.race = race;
         this.classType = classType;
         this.hp = race.getBaseHP() + classType.getBonusHP();
         this.mana = race.getBaseMana() + classType.getBonusMana();
-    }
-
-    public Player(String name) {
-        this.name = name;
     }
 
     public Player setRace(Race race) {
@@ -63,7 +57,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return String.format("Name: %s\nRace: %s\nClass: %s\nHP: %d\nMana: %d\n", name, race.getName(),
+        return String.format("Race: %s\nClass: %s\nHP: %d\nMana: %d\n", race.getName(),
                 classType.getName(), hp, mana);
     }
 }

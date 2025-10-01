@@ -9,10 +9,13 @@ public class Tikbalang extends Race {
 
     @Override
     public String toString() {
-        return "A tikbalang is a mythical, half-human, half-horse creature, known for its horse-like head and\n"
+        return "+===================== Tikbalang ============================+\n" +
+                "A tikbalang is a mythical, half-human, half-horse creature, known for its horse-like head and hooves,\n"
                 +
-                "hooves, long limbs, and ability to lead travelers astray in forests and mountains. Often portrayed \n"
-                +
-                "as a deceptive prankster or trickster, it can also be seen as a guardian of nature.\n";
+                "long limbs, and ability to lead travelers astray in forests and mountains. Often portrayed as a\n" +
+                "deceptive prankster or trickster, it can also be seen as a guardian of nature.\n" +
+                "HP: 95\n" +
+                "Mana: 80\n" +
+                "+=============================================================+";
     }
 }
