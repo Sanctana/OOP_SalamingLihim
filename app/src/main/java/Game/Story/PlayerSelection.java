@@ -9,6 +9,8 @@ import Utilities.Factory.Race.*;
 import static Game.GameManager.getScanner;
 
 public class PlayerSelection implements Story {
+
+    @Override
     public void startSection() {
         Factory chosenRace = null;
         Race race = null;
@@ -22,7 +24,7 @@ public class PlayerSelection implements Story {
 
             int choice = getScanner().nextInt();
 
-            if (getScanner().hasNextLine()) {
+            if (getScanner().hasNextLine()) { // clear the buffer
                 getScanner().nextLine();
             }
 

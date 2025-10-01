@@ -4,6 +4,7 @@ import static Game.GameManager.getScanner;
 
 public class Intro implements Story {
 
+    @Override
     public void startSection() {
         System.out.println("+------------------------------------------------+");
         System.out.println("|             Welcome, Traveler, to              |");

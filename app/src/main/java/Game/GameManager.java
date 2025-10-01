@@ -24,7 +24,7 @@ public class GameManager {
     }
 
     public void run() {
-        for (Story story : stories) {
+        for (Story story : stories) { // For each story in stories
             story.startSection();
         }
     }
