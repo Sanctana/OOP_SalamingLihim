@@ -5,7 +5,6 @@ import java.util.Scanner;
 import Characters.Race.*;
 import Utilities.Factory.Factory;
 import Utilities.Factory.Race.*;
-import Characters.Class.*;
 
 public class GameManager {
     private Player player;
@@ -54,11 +53,10 @@ public class GameManager {
         System.out.println(String.format("(%s, %d, %d)", race.getName(),
                 race.getBaseHP(), race.getBaseMana()));
 
-        ClassType classType = factory.createClass();
         System.out.println("Please enter a name for your character: ");
         String name = scanner.nextLine();
 
-        player = new Player(name, race, classType);
+        player = new Player(name, race, factory.createClass());
         System.out.println(player);
     }
 }

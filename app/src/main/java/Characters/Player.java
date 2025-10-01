@@ -23,8 +23,6 @@ public class Player {
         this.classType = classType;
         this.hp = race.getBaseHP() + classType.getBonusHP();
         this.mana = race.getBaseMana() + classType.getBonusMana();
-
-        classType.useSkill(Skills.SKILL_1.ordinal());
     }
 
     public Player(String name) {
