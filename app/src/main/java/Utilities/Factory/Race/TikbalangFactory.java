@@ -4,6 +4,7 @@ import static Game.GameManager.getScanner;
 
 import Characters.Class.Archer;
 import Characters.Class.ClassType;
+import Characters.Class.Spearmen;
 import Characters.Race.Race;
 import Characters.Race.Tikbalang;
 import Utilities.Factory.Factory;
@@ -18,6 +19,7 @@ public class TikbalangFactory implements Factory {
         System.out.println("Choose your class: ");
         System.out.println("1. Archer ");
         System.out.println("2. Spearmen");
+        System.out.print("Choice: ");
         int choice = getScanner().nextInt();
 
         ClassType classType;
@@ -26,8 +28,8 @@ public class TikbalangFactory implements Factory {
                 classType = new Archer();
                 break;
             case 2:
-                // classType = new Spearmen();
-                // break;
+                 classType = new Spearmen();
+                 break;
             default:
                 System.out.println("Invalid! Defaulting to Archer.");
                 classType = new Archer();

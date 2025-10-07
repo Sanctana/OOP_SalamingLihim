@@ -6,6 +6,8 @@ import Characters.Player;
 import Game.Story.Story;
 import Game.Story.Intro;
 import Game.Story.PlayerSelection;
+import Game.Story.BiringanIntro;
+import Game.Story.*;
 
 public class GameManager {
     private static Player player;
@@ -15,7 +17,9 @@ public class GameManager {
     public GameManager() {
         stories = new Story[] {
                 new Intro(),
-                new PlayerSelection()
+                new PlayerSelection(),
+                new BiringanIntro(),
+                new Mission1()
         };
     }
 
@@ -31,5 +35,9 @@ public class GameManager {
 
     public static void setPlayer(Player player) {
         GameManager.player = player;
+    }
+
+    public static Player getPlayer() {
+        return player;
     }
 }

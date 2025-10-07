@@ -2,6 +2,7 @@ package Game.Story;
 
 import Characters.Player;
 import Characters.Race.Race;
+import Characters.Class.*;
 import Game.GameManager;
 import Utilities.Factory.*;
 import Utilities.Factory.Race.*;
@@ -28,7 +29,7 @@ public class PlayerSelection implements Story {
                 getScanner().nextLine();
             }
 
-            do {
+            do { //mag try catch
                 switch (choice) {
                     case 1:
                         chosenRace = new TikbalangFactory();
@@ -38,22 +39,32 @@ public class PlayerSelection implements Story {
                     // implement manananggal
 
                     default:
-                        System.out.println("Please pick a valid choice.");
-                        break; // asks for race again ??? or supposed to
+                        System.out.println("Invalid choice! Please pick a valid choice.");
+                        break;
                 }
             } while (chosenRace == null);
 
             // Confirmation!!
 
             race = chosenRace.createRace();
-            System.out.print("You choose " + race.getName() + ". Confirm? (Y/N): ");
+            System.out.print("You have chosen " + race.getName() + ". Confirm? (Y/N): ");
             String confirm = getScanner().nextLine().trim().toUpperCase(); // trims unnecessary shiz like spaces for
                                                                            // easy input
 
             if (confirm.equals("Y")) {
-                Player player = new Player(race, chosenRace.createClass());
+
+                ClassType classType = chosenRace.createClass();
+                getScanner().nextLine();
+                System.out.print("\n[Please enter name]: ");
+                String name = getScanner().nextLine().trim();
+
+
+                Player player = new Player(name, race, classType);
                 System.out.println(player);
                 GameManager.setPlayer(player);
+                System.out.print("Press ENTER to continue...");
+                getScanner().nextLine();
+
             } else {
                 chosenRace = null; // resets the choice
                 System.out.println("Okay! Let's check out the selection once more.");

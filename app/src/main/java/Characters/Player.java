@@ -11,16 +11,22 @@ enum Skills {
 }
 
 public class Player {
+    private String name;
     private Race race;
     private ClassType classType;
     private int hp;
     private int mana;
 
-    public Player(Race race, ClassType classType) {
+    public Player(String name, Race race, ClassType classType) {
+        this.name = name;
         this.race = race;
         this.classType = classType;
         this.hp = race.getBaseHP() + classType.getBonusHP();
         this.mana = race.getBaseMana() + classType.getBonusMana();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Player setRace(Race race) {
@@ -33,11 +39,15 @@ public class Player {
         return this;
     }
 
-    public void displayStats() {
+    public ClassType getPlayerClass() {
+        return classType;
+    }
+
+   /* public void displayStats() {
         System.out.println("Race: " + race.getName());
         System.out.println("Class: " + classType.getName());
         System.out.println("HP: " + hp + " | Mana: " + mana);
-    }
+    }*/
 
     public Boolean isAlive() {
         return hp > 0;
@@ -57,7 +67,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return String.format("Race: %s\nClass: %s\nHP: %d\nMana: %d\n", race.getName(),
+        return String.format("Name: %s\nRace: %s\nClass: %s\nHP: %d\nMana: %d\n", name, race.getName(),
                 classType.getName(), hp, mana);
     }
 }

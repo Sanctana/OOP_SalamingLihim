@@ -14,7 +14,7 @@ public class Intro implements Story {
         System.out.println("|        in Biringan's hidden realm...           |");
         System.out.println("+------------------------------------------------+");
         System.out.println();
-        System.out.println("Prepare yourself — your journey begins now!");
+        System.out.println("Prepare yourself -- your journey begins now!");
         System.out.println("Press ENTER to continue...");
         getScanner().nextLine();
 
