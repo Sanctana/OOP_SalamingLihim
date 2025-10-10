@@ -9,8 +9,8 @@ plugins {
 }
 
 dependencies {
-    implementation("org.apache.commons:commons-text")
     implementation(project(":utilities"))
+    implementation("org.jline:jline:3.30.6")
 }
 
 application {
@@ -20,4 +20,20 @@ application {
 
 tasks.named<JavaExec>("run"){
     standardInput = System.`in`
+}
+
+tasks.named<Jar>("jar") {
+    // ensure the utilities project jar is produced before building this jar
+    dependsOn(project(":utilities").tasks.named("jar"))
+    
+    // include runtime dependencies inside the jar (uber-jar)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from({
+        configurations.runtimeClasspath.get()
+            .filter { it.exists() }
+            .map { if (it.isDirectory) it else zipTree(it) }
+    })
+    manifest {
+        attributes("Main-Class" to application.mainClass.get())
+    }
 }

@@ -1,22 +1,27 @@
 package Game.Story;
 
-import static Game.GameManager.getScanner;
+import static Utilities.Terminal.TerminalIO.animateText;
+import static Utilities.Terminal.TerminalIO.clearTerminal;
+import static Utilities.Terminal.TerminalIO.getScanner;
 
 public class Intro implements Story {
 
     @Override
     public void startSection() {
-        System.out.println("+------------------------------------------------+");
-        System.out.println("|             Welcome, Traveler, to              |");
-        System.out.println("|              *  SALAMING LIHIM  *              |");
-        System.out.println("|                                                |");
-        System.out.println("|   Where myths breathe, and shadows move        |");
-        System.out.println("|        in Biringan's hidden realm...           |");
-        System.out.println("+------------------------------------------------+");
-        System.out.println();
-        System.out.println("Prepare yourself -- your journey begins now!");
-        System.out.println("Press ENTER to continue...");
+        String text = "+------------------------------------------------+\n"
+                + "|             Welcome, Traveler, to              |\n"
+                + "|              *  SALAMING LIHIM  *              |\n"
+                + "|                                                |\n"
+                + "|   Where myths breathe, and shadows move        |\n"
+                + "|        in Biringan's hidden realm...           |\n"
+                + "+------------------------------------------------+\n"
+                + "\n"
+                + "Prepare yourself -- your journey begins now!\n";
+        animateText(text, 10);
+
+        System.out.print("Press ENTER to continue...");
         getScanner().nextLine();
+        clearTerminal();
 
         System.out.println("+============================================================+");
         System.out.println("|                     STORY INTRODUCTION                     |");
@@ -40,5 +45,6 @@ public class Intro implements Story {
         System.out.println();
         System.out.println("+=============================================================+");
         System.out.print(">> Press ENTER to continue...");
+        getScanner().nextLine();
     }
 }

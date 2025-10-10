@@ -1,12 +1,12 @@
 package Utilities.Factory.Race;
 
-import static Game.GameManager.getScanner;
+import static Utilities.Terminal.TerminalIO.getScanner;
 
 import Characters.Class.Archer;
 import Characters.Class.ClassType;
 import Characters.Class.Spearmen;
-import Characters.Race.Race;
 import Characters.Race.Tikbalang;
+import Characters.Race.Race;
 import Utilities.Factory.Factory;
 
 public class TikbalangFactory implements Factory {
@@ -28,8 +28,8 @@ public class TikbalangFactory implements Factory {
                 classType = new Archer();
                 break;
             case 2:
-                 classType = new Spearmen();
-                 break;
+                classType = new Spearmen();
+                break;
             default:
                 System.out.println("Invalid! Defaulting to Archer.");
                 classType = new Archer();

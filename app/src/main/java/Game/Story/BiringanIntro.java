@@ -2,7 +2,8 @@ package Game.Story;
 
 import Characters.Player;
 import Game.GameManager;
-import static Game.GameManager.getScanner;
+
+import static Utilities.Terminal.TerminalIO.getScanner;
 
 public class BiringanIntro implements Story {
 

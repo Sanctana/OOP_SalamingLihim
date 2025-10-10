@@ -7,7 +7,7 @@ import Game.GameManager;
 import Utilities.Factory.*;
 import Utilities.Factory.Race.*;
 
-import static Game.GameManager.getScanner;
+import static Utilities.Terminal.TerminalIO.*;
 
 public class PlayerSelection implements Story {
 
@@ -17,32 +17,68 @@ public class PlayerSelection implements Story {
         Race race = null;
 
         while (chosenRace == null) {
-            System.out.println("\n\n[Please choose your mythical creature]");
-            System.out.println("1. Tikbalang");
-            System.out.println("2. Kapre");
-            System.out.println("3. Manananggal");
-            System.out.print("Choice: ");
+            // interactive menu using arrow keys
+            String[] options = { "Tikbalang", "Kapre", "Manananggal" };
+            int index = 0;
+            boolean madeChoice = false;
+            int choice = -1;
 
-            int choice = getScanner().nextInt();
+            while (!madeChoice) {
+                clearTerminal();
+                System.out.println("\n\n[Please choose your mythical creature]\n");
+                for (int i = 0; i < options.length; i++) {
+                    if (i == index) {
+                        // reverse video for highlight
+                        System.out.println("\u001B[7m" + (i + 1) + ". " + options[i] + "\u001B[0m");
+                    } else {
+                        System.out.println((i + 1) + ". " + options[i]);
+                    }
+                }
+                System.out.println("\nUse UP/DOWN arrows to move, ENTER to select.");
 
-            if (getScanner().hasNextLine()) { // clear the buffer
-                getScanner().nextLine();
+                int[] seq = readKeySequence();
+                if (seq == null || seq.length == 0) {
+                    continue;
+                }
+
+                // Arrow keys typically come as [27, 91, 65] (up) or [27,91,66] (down)
+                if (seq.length >= 3 && seq[0] == 27 && seq[1] == 91) {
+                    if (seq[2] == 65) { // up
+                        index = (index - 1 + options.length) % options.length;
+                    } else if (seq[2] == 66) { // down
+                        index = (index + 1) % options.length;
+                    }
+                } else {
+                    int k = seq[0];
+                    if (k == 10 || k == 13) { // Enter (LF or CR)
+                        choice = index;
+                        madeChoice = true;
+                    } else if (k == 'w' || k == 'W') { // optional vim-style keys
+                        index = (index - 1 + options.length) % options.length;
+                    } else if (k == 's' || k == 'S') {
+                        index = (index + 1) % options.length;
+                    }
+                }
             }
 
-            do { //mag try catch
-                switch (choice) {
-                    case 1:
-                        chosenRace = new TikbalangFactory();
-                        break;
+            // map choice index to factories
+            switch (choice + 1) {
+                case 1:
+                    chosenRace = new TikbalangFactory();
+                    break;
 
-                    // implement kapre
-                    // implement manananggal
+                // implement kapre
+                // implement manananggal
 
-                    default:
-                        System.out.println("Invalid choice! Please pick a valid choice.");
-                        break;
-                }
-            } while (chosenRace == null);
+                default:
+                    System.out.println("Invalid choice! Please pick a valid choice.");
+                    chosenRace = null;
+                    break;
+            }
+
+            if (chosenRace == null) {
+                continue;
+            }
 
             // Confirmation!!
 
@@ -54,16 +90,15 @@ public class PlayerSelection implements Story {
             if (confirm.equals("Y")) {
 
                 ClassType classType = chosenRace.createClass();
-                getScanner().nextLine();
+                clearBuffer();
                 System.out.print("\n[Please enter name]: ");
                 String name = getScanner().nextLine().trim();
-
 
                 Player player = new Player(name, race, classType);
                 System.out.println(player);
                 GameManager.setPlayer(player);
                 System.out.print("Press ENTER to continue...");
-                getScanner().nextLine();
+                clearBuffer();
 
             } else {
                 chosenRace = null; // resets the choice

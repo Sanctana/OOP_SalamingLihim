@@ -1,6 +1,7 @@
 package Characters.Class;
 
 import Actions.Attack;
+
 public class Spearmen extends ClassType {
 
     public Spearmen() {
@@ -12,9 +13,12 @@ public class Spearmen extends ClassType {
 
     @Override
     public String toString() {
-        return "Spearmen are the iron wall and piercing fang of any disciplined force. With unmatched reach and formation\n" +
-                "control, they hold lines, break ranks, and strike with relentless precision. Whether defending a fortress\n" +
-                "or charging into chaos, the Spearman is the embodiment of martial order and battlefield dominance. Are\n" +
+        return "Spearmen are the iron wall and piercing fang of any disciplined force. With unmatched reach and formation\n"
+                +
+                "control, they hold lines, break ranks, and strike with relentless precision. Whether defending a fortress\n"
+                +
+                "or charging into chaos, the Spearman is the embodiment of martial order and battlefield dominance. Are\n"
+                +
                 "you ready to pierce through any enemy?\n";
     }
 
