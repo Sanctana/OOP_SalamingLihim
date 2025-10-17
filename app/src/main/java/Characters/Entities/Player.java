@@ -1,4 +1,4 @@
-package Characters;
+package Characters.Entities;
 
 import Characters.Class.ClassType;
 import Characters.Race.Race;
@@ -10,23 +10,16 @@ enum Skills {
     SKILL_4 // 3
 }
 
-public class Player {
-    private String name;
+public class Player extends Entity implements Cloneable {
     private Race race;
     private ClassType classType;
-    private int hp;
     private int mana;
 
     public Player(String name, Race race, ClassType classType) {
-        this.name = name;
+        super(name, race.getBaseHP() + classType.getBonusHP());
+        this.mana = race.getBaseMana() + classType.getBonusMana();
         this.race = race;
         this.classType = classType;
-        this.hp = race.getBaseHP() + classType.getBonusHP();
-        this.mana = race.getBaseMana() + classType.getBonusMana();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Player setRace(Race race) {
@@ -43,14 +36,6 @@ public class Player {
         return classType;
     }
 
-    public Boolean isAlive() {
-        return hp > 0;
-    }
-
-    public void takeDamage(int damage) {
-        hp -= damage;
-    }
-
     public int basicAttack() {
         return race.basicAttack();
     }
@@ -61,7 +46,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return String.format("Name: %s\nRace: %s\nClass: %s\nHP: %d\nMana: %d\n", name, race.getName(),
-                classType.getName(), hp, mana);
+        return String.format("Name: %s\nRace: %s\nClass: %s\nHP: %d\nMana: %d\n", getName(), race.getName(),
+                classType.getName(), getHp(), mana);
     }
 }

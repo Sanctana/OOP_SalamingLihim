@@ -1,8 +1,9 @@
 package Game.Story;
 
-import Characters.Player;
 import Game.GameManager;
 import static Game.GameManager.getScanner;
+
+import Characters.Entities.Player;
 
 public class BiringanIntro implements Story {
 

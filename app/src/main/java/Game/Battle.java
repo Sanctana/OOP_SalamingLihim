@@ -1,56 +1,62 @@
 package Game;
 
-import Characters.Player;
-import Characters.Enemies.Enemy;
-import Actions.Attack;
+import Characters.Entities.Enemies.Enemy;
+import Characters.Entities.Player;
 
-import java.util.List;
 import java.util.Scanner;
-
+import java.util.List;
 
 public class Battle { // Fix, kay not working nya di papud sure (change if needed)
 
-    //Battle Contents:
+    // Battle Contents:
 
-    /*Display Round number
-    Display player current hp and mana
-    display ("Your turn! Choose a skill: (display skills1-3)")
-             display who took damaage n how much
-    randomize ang damage sa enemy*/
+    /*
+     * Display Round number
+     * Display player current hp and mana
+     * display ("Your turn! Choose a skill: (display skills1-3)")
+     * display who took damaage n how much
+     * randomize ang damage sa enemy
+     */
 
-    private final Player player;
-    private final Enemy[] enemies;
+    private final List<Enemy> enemies;
 
-    public Battle(Player player, Enemy[] enemies) {
-        this.player = player;
+    public Battle(List<Enemy> enemies) {
         this.enemies = enemies;
     }
 
     public void startBattle() {
         Scanner sc = GameManager.getScanner();
+        Player player = GameManager.getPlayer();
 
-        while(player.isAlive() && anyEnemyAlive()) {
-            int round = 1;
-            boolean playerTurn = true;
+        System.out.println("\n===== BATTLE START =====");
 
-            System.out.println("\n===== BATTLE START =====");
+        for (int round = 1; player.isAlive() && anyEnemyAlive(); round++) {
+            System.out.println("\n--- Round " + round + " ---");
 
-            for(int i = 0; i < enemies.length; i++) {
-                Enemy enemy = enemies[i];
-
-                if(anyEnemyAlive()) {
-                    Attack attack = enemy.chooseAttack();
-                    int damage = attack.getDamage();
-
-                    System.out.println(enemy.getName() + " attacks using " + attack.getName());
-                    System.out.println("It dealt " + damage + " damage to you!");
-
-                    player.takeDamage(damage);
-                }
+            // Enemies' turn
+            for (Enemy enemy : enemies) {
+                player.takeDamage(enemy.attack());
             }
+
+            // Player's turn
+            System.out.println("\nYour turn! Choose an action:");
+            System.out.println("1. Basic Attack");
+            System.out.println("2. Use Skill");
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+
+            if (sc.hasNextLine()) {
+                sc.nextLine(); // Consume newline
+            }
+
+            switch (choice) {
+                // Skill skill skill
+            }
+
+            removeDefeatedEnemies();
         }
 
-        if(player.isAlive()) {
+        if (player.isAlive()) {
             System.out.println("\nYou defeated all the enemies!");
         } else {
             System.out.println("\nYou were defeated...");
@@ -58,11 +64,10 @@ public class Battle { // Fix, kay not working nya di papud sure (change if neede
     }
 
     private boolean anyEnemyAlive() {
-        for (int i = 0; i < enemies.length; i++) {
-            if (enemies[i].isAlive()) {
-                return true;
-            }
-        }
-        return false;
+        return enemies.size() > 0;
+    }
+
+    private void removeDefeatedEnemies() {
+        enemies.removeIf(enemy -> !enemy.isAlive());
     }
 }

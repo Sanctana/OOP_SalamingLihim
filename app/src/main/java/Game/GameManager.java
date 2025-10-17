@@ -2,7 +2,7 @@ package Game;
 
 import java.util.Scanner;
 
-import Characters.Player;
+import Characters.Entities.Player;
 import Game.Story.Story;
 import Game.Story.Intro;
 import Game.Story.PlayerSelection;

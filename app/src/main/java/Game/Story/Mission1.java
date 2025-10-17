@@ -1,14 +1,14 @@
 package Game.Story;
 
-import Characters.Enemies.*;
-import Characters.Player;
+import Characters.Entities.Enemies.*;
+import Characters.Entities.Player;
 import Game.Battle;
 import Game.GameManager;
 
+import static Game.GameManager.getScanner;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static Game.GameManager.getScanner;
 
 public class Mission1 implements Story {
 
@@ -20,7 +20,6 @@ public class Mission1 implements Story {
         System.out.println("================================================");
         System.out.println();
 
-
         System.out.println("???: Someone help! Please! A thief has stolen my merchandise!");
         System.out.println();
         System.out.println("[You encountered 5 thief duwendes. Choose a target and an attack]");
@@ -29,13 +28,9 @@ public class Mission1 implements Story {
         System.out.println();
 
         Player player = GameManager.getPlayer();
+        List<Enemy> enemies = new ArrayList<Enemy>();
 
-        List<Enemy> enemies = new ArrayList<>();
-        for(int i = 0; i < 5; i++) {
-            enemies.add(new Duwende());
-        }
-
-        Battle battle = new Battle(player, enemies);
+        Battle battle = new Battle(enemies);
         battle.startBattle();
 
         if (player.isAlive()) {
@@ -43,7 +38,8 @@ public class Mission1 implements Story {
                     "have made it through the end of this month without that merchandise. Especially\n" +
                     "with the darkening atmosphere of the city– oop! Ishouldn’thavesaidthat. \n");
 
-            System.out.println(player.getName() + ": I’m actually investigating that. If you want to repay me, tell me everything you know.");
+            System.out.println(player.getName()
+                    + ": I’m actually investigating that. If you want to repay me, tell me everything you know.");
 
             System.out.println(" Well, I am indebted to you, so I shall tell you all that I can.\n" +
                     "I heard that there were an increasing number of Enkantos and Diwatas missing.\n" +
@@ -56,6 +52,8 @@ public class Mission1 implements Story {
             getScanner().nextLine();
 
             System.out.println("You agree and go on your way.");
+        } else {
+            System.out.println("Skill issue. Please try again.");
         }
     }
 

@@ -1,8 +1,8 @@
 package Game.Story;
 
-import Characters.Player;
 import Characters.Race.Race;
 import Characters.Class.*;
+import Characters.Entities.Player;
 import Game.GameManager;
 import Utilities.Factory.*;
 import Utilities.Factory.Race.*;
