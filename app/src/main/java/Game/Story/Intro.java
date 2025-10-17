@@ -15,7 +15,7 @@ public class Intro implements Story {
         System.out.println("+------------------------------------------------+");
         System.out.println();
         System.out.println("Prepare yourself -- your journey begins now!");
-        System.out.println("Press ENTER to continue...");
+        System.out.println(">> Press ENTER to continue...");
         getScanner().nextLine();
 
         System.out.println("+============================================================+");

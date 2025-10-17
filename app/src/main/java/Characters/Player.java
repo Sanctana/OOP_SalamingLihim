@@ -43,12 +43,6 @@ public class Player {
         return classType;
     }
 
-   /* public void displayStats() {
-        System.out.println("Race: " + race.getName());
-        System.out.println("Class: " + classType.getName());
-        System.out.println("HP: " + hp + " | Mana: " + mana);
-    }*/
-
     public Boolean isAlive() {
         return hp > 0;
     }

@@ -18,7 +18,7 @@ public class BiringanIntro implements Story {
                 ", he/she starts to\nfind clues in the heart of Biringan City. " +
                 playerName + " is taking the\nfirst step to the battle that will determine the fate of their kind.");
         System.out.println();
-        System.out.print("Press ENTER to continue...");
+        System.out.print(">> Press ENTER to continue...");
         getScanner().nextLine();
         System.out.println("+------------------------------------------------+");
         System.out.println("|                                                |");
@@ -40,7 +40,7 @@ public class BiringanIntro implements Story {
         System.out.println("You delve deep into the dark alley, and just as you thought that it was\n" +
                 "too peaceful, you hear a cry of distress.");
         System.out.println();
-        System.out.print("Press ENTER to continue...");
+        System.out.print(">> Press ENTER to continue...");
         getScanner().nextLine();
     }
 

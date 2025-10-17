@@ -19,7 +19,9 @@ public class GameManager {
                 new Intro(),
                 new PlayerSelection(),
                 new BiringanIntro(),
-                new Mission1()
+                new Mission1(),
+                new Mission2(),
+                new Mission3()
         };
     }
 
